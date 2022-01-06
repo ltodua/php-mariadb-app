@@ -2,26 +2,32 @@ version: "3.9"
 
 services:
 
-  web:
-    build:
-      dockerfile: Dockerfile
-      context: web/
-    #container_name: web
-
-    ports:
-      - 8080:80
-    volumes:
-      - /home/luciann/training/php_mariadb_app/web:/var/www/html
-
   db:
     build:
       dockerfile: Dockerfile
       context: db/
    # container_name: db
+   # restart: always
 
     volumes:
-      - /home/luciann/training/php_mariadb_app/db:/var/lib/mysql
+      - /Users/luciann/Desktop/training/php-mariadb-app/db:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: pw123
       MYSQL_DATABASE: wordpress
+   # command: printenv
+
+
+
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: web/
+    #container_name: web
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    volumes:
+      - /Users/luciann/Desktop/training/php-mariadb-app/web:/var/www/html
+
