@@ -13,6 +13,7 @@ services:
     volumes:
       - /Users/luciann/Desktop/training/php-mariadb-app/web:/var/www/html
 
+
   db:
     build:
       dockerfile: Dockerfile
@@ -25,3 +26,4 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pw123
       MYSQL_DATABASE: wordpress
+    command: printenv
