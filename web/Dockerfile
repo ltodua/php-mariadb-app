@@ -1,5 +1,15 @@
-FROM mariadb
+FROM php:apache
 LABEL maintainer="Luka Todua"
 
-RUN apt-get update && apt-get -y upgrade && apt-get clean
-RUN apt-get install -y mysql-client-8.0 && apt-get install -y default-mysql-client
+#WORKDIR /web
+
+RUN docker-php-ext-install mysqli
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y wget && apt-get clean
+
+COPY . .
+
+#RUN chmod +x setup.sh
+#RUN bash setup.sh
+
+RUN chown -R www-data:www-data wordpress
