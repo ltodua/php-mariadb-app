@@ -11,7 +11,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - /home/luciann/training/php_mariadb_app/web:/var/www/html
+      - /Users/luciann/Desktop/training/php-mariadb-app/web:/var/www/html
 
   db:
     build:
@@ -20,7 +20,7 @@ services:
    # container_name: db
 
     volumes:
-      - /home/luciann/training/php_mariadb_app/db:/var/lib/mysql
+      - /Users/luciann/Desktop/training/php-mariadb-app/db:/var/lib/mysql
 
     environment:
       MYSQL_ROOT_PASSWORD: pw123
