@@ -3,3 +3,4 @@ db/mysql
 db/preformance_schema
 db/sys
 
+.DS_Store
